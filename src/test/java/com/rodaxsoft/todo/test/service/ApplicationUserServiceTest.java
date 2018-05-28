@@ -46,7 +46,7 @@ public class ApplicationUserServiceTest {
 	}
 
 	private JSONWebToken createUser() {
-		ApplicationUser user = TaskTestUtils.createMockApplicationUser();
+		ApplicationUser user = TaskTestUtils.createStubApplicationUser();
 		JSONWebToken token = userService.signUpUser(user);
 		Assert.assertNotNull(token);
 		Assert.assertNotNull(token.getAccessToken());
@@ -59,7 +59,7 @@ public class ApplicationUserServiceTest {
 		//Create user in the database
 		JSONWebToken token = createUser();
 		
-		ApplicationUser user = TaskTestUtils.createMockApplicationUser();
+		ApplicationUser user = TaskTestUtils.createStubApplicationUser();
 		token = userService.loginUser(user);
 		Assert.assertNotNull(token);
 		Assert.assertNotNull(token.getAccessToken());

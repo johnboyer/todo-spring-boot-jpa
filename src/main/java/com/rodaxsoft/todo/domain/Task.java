@@ -137,11 +137,11 @@ public class Task {
 	/**
 	 * @param completed the completed to set
 	 */
-	public void setCompleted(Date completionDate) {
-		this.completed = completionDate;
+	public void setCompleted(Date completed) {
+		this.completed = completed;
 	}
 	/**
-	 * @param created the created to set
+	 * @param createdDate the created to set
 	 */
 	public void setCreated(Date createdDate) {
 		this.created = createdDate;
@@ -155,8 +155,8 @@ public class Task {
 	/**
 	 * @param due the due to set
 	 */
-	public void setDue(Date dueDate) {
-		this.due = dueDate;
+	public void setDue(Date due) {
+		this.due = due;
 	}
 	
 	/**
@@ -169,8 +169,8 @@ public class Task {
 	/**
 	 * @param modified the modified to set
 	 */
-	public void setModified(Date modifiedDate) {
-		this.modified = modifiedDate;
+	public void setModified(Date modified) {
+		this.modified = modified;
 	}
 
 	/**

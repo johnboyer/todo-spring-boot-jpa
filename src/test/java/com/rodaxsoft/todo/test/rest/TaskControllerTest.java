@@ -12,6 +12,8 @@ package com.rodaxsoft.todo.test.rest;
 
 
 import static com.rodaxsoft.todo.security.SecurityConstants.HEADER_STRING;
+import static com.rodaxsoft.todo.test.TaskTestUtils.createStubApplicationUser;
+import static com.rodaxsoft.todo.test.TaskTestUtils.createStubTask;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -96,7 +98,7 @@ public class TaskControllerTest {
 	public void setUp() {
 		
 		try {
-			ApplicationUser user = TaskTestUtils.createMockApplicationUser();
+			ApplicationUser user = createStubApplicationUser();
 			String json = new ObjectMapper().writeValueAsString(user);
 			MvcResult result;
 			
@@ -120,7 +122,7 @@ public class TaskControllerTest {
 	public void testCreateTask() {
 		try {
 			
-			Task task = TaskTestUtils.createMockTask();
+			Task task = createStubTask();
 			String json = new ObjectMapper().writeValueAsString(task);
 			MvcResult result = mvc.perform(post(TASKS_ENDPOINT)
 					                .contentType(MediaType.APPLICATION_JSON)
@@ -144,7 +146,7 @@ public class TaskControllerTest {
 	
 	@Test
 	public void testDeleteTask() {
-		Task task = TaskTestUtils.createMockTask();
+		Task task = createStubTask();
 		task = taskService.createTask(task);
 
 		
@@ -204,7 +206,7 @@ public class TaskControllerTest {
 	
 	@Test
 	public void testUpdateTask() {
-		Task task = TaskTestUtils.createMockTask();
+		Task task = createStubTask();
 		task = taskService.createTask(task);
 		task.setDescription("All new description");
 		task.setTitle("My brand new title");

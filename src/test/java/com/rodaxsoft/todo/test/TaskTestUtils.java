@@ -37,7 +37,7 @@ public class TaskTestUtils {
 	public static List<Task> create100Tasks() {
 		List<Task> tasks = new ArrayList<>();
 		for (int i = 0; i < 100; i++) {
-			Task task = createMockTask();
+			Task task = createStubTask();
 			if(i > 0 && i < 80) {
 				Date lastDue = tasks.get(i-1).getDue();
 				LocalDate ld = new LocalDate(lastDue.getTime());
@@ -52,7 +52,7 @@ public class TaskTestUtils {
 		return tasks;
 	}
 	
-	public static ApplicationUser createMockApplicationUser() {
+	public static ApplicationUser createStubApplicationUser() {
 		ApplicationUser mockUser = new ApplicationUser();
 		mockUser.setEmail("john@example.com");
 		mockUser.setName("John Doe");
@@ -61,10 +61,10 @@ public class TaskTestUtils {
 	}
 	
 	public static String createMockApplicationUserJson() throws JsonProcessingException {
-		return new ObjectMapper().writeValueAsString(createMockApplicationUser());
+		return new ObjectMapper().writeValueAsString(createStubApplicationUser());
 	}
 
-	public static Task createMockTask() {
+	public static Task createStubTask() {
 		Task task = new Task();
 		task.setDue(DUE_DATE);
 		task.setDescription(DESCRIPTION);
@@ -95,7 +95,7 @@ public class TaskTestUtils {
 	}
 	
 	public static ApplicationUser saveMockApplicationUser(TestBeanProvider provider) {
-		ApplicationUser mockUser = createMockApplicationUser();
+		ApplicationUser mockUser = createStubApplicationUser();
 		//Encrypt password
 		mockUser.setPassword(provider.getBCryptPasswordEncoder().encode(mockUser.getPassword()));
 		return provider.getApplicationUserRepository().save(mockUser);

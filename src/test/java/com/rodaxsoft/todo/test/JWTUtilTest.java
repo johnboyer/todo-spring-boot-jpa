@@ -14,7 +14,7 @@ import static com.rodaxsoft.todo.security.JWTUtil.generateJsonWebToken;
 import static com.rodaxsoft.todo.security.JWTUtil.parseToken;
 import static com.rodaxsoft.todo.security.JWTUtil.parseTokenClaims;
 import static com.rodaxsoft.todo.security.JWTUtil.refreshAccessToken;
-import static com.rodaxsoft.todo.test.TaskTestUtils.createMockApplicationUser;
+import static com.rodaxsoft.todo.test.TaskTestUtils.createStubApplicationUser;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -34,7 +34,7 @@ public class JWTUtilTest  {
 	
 	
 	private JSONWebToken createToken() {
-		return generateJsonWebToken(createMockApplicationUser());
+		return generateJsonWebToken(createStubApplicationUser());
 	}
 	
 	@Test
@@ -43,7 +43,7 @@ public class JWTUtilTest  {
 		final String accessToken = webToken.getAccessToken();
 		String username = parseToken(accessToken).getUsername();
 		
-		final ApplicationUser mockUser = createMockApplicationUser();
+		final ApplicationUser mockUser = createStubApplicationUser();
 		Assert.assertTrue(username.equals(mockUser.getUsername()));
 		
 		final String refreshToken = webToken.getRefreshToken();
@@ -63,7 +63,7 @@ public class JWTUtilTest  {
 		final String accessToken = webToken.getAccessToken();
 		String username = parseToken(accessToken).getUsername();
 		
-		final ApplicationUser mockUser = createMockApplicationUser();
+		final ApplicationUser mockUser = createStubApplicationUser();
 		Assert.assertTrue(username.equals(mockUser.getUsername()));
 		
 		final String refreshToken = webToken.getRefreshToken();
@@ -78,7 +78,7 @@ public class JWTUtilTest  {
 		String accessToken = webToken.getAccessToken();
 		String username = parseToken(accessToken).getUsername();
 		
-		final ApplicationUser mockUser = createMockApplicationUser();
+		final ApplicationUser mockUser = createStubApplicationUser();
 		Assert.assertTrue(username.equals(mockUser.getUsername()));
 		
 		final String refreshToken = webToken.getRefreshToken();

@@ -40,15 +40,20 @@ import com.rodaxsoft.todo.validation.TaskCreateAndUpdateValidator;
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
-	
-	@Autowired
+
 	private TaskService taskService;
-	
-	@Autowired
+
 	private ApplicationUserService userService;
-	
-	@Autowired
+
 	private TaskCreateAndUpdateValidator taskValidator;
+
+	@Autowired
+	public TaskController(TaskService taskService, ApplicationUserService userService,
+						  TaskCreateAndUpdateValidator taskValidator) {
+		this.taskService = taskService;
+		this.userService = userService;
+		this.taskValidator = taskValidator;
+	}
 
 	@PostMapping
 	public Task createTask(@RequestBody Task task, BindingResult result, @RequestHeader(HEADER_STRING) String token) {

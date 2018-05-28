@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.5.6.RELEASE'
+		springBootVersion = '1.5.13.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -28,14 +28,12 @@ dependencies {
 	compile("org.hsqldb:hsqldb")
 	compile("org.springframework.boot:spring-boot-starter-security")
 	compile("io.jsonwebtoken:jjwt:0.7.0")
-	
-    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
-    // https://mvnrepository.com/artifact/commons-validator/commons-validator
     compile group: 'commons-validator', name: 'commons-validator', version: '1.6'   
     
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	 // https://mvnrepository.com/artifact/joda-time/joda-time
     testCompile group: 'joda-time', name: 'joda-time', version: '2.9.9'
+	testCompile group: 'org.mockito', name: 'mockito-all', version: '2.0.2-beta'
 	
 }

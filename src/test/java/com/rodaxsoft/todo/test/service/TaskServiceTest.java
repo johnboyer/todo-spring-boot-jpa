@@ -72,7 +72,7 @@ public class TaskServiceTest {
 	
 	@Before
 	public void setup() {
-		ApplicationUser user = userRepository.save(TaskTestUtils.createMockApplicationUser());
+		ApplicationUser user = userRepository.save(TaskTestUtils.createStubApplicationUser());
 		userId = user.getId();
 	}
 	

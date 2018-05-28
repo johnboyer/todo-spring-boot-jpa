@@ -42,9 +42,7 @@ import com.rodaxsoft.todo.TaskApplication;
 import com.rodaxsoft.todo.data.ApplicationUserRepository;
 import com.rodaxsoft.todo.domain.ApplicationUser;
 import com.rodaxsoft.todo.domain.Profile;
-import com.rodaxsoft.todo.security.ApplicationAuthentication;
 import com.rodaxsoft.todo.security.JWTToken;
-import com.rodaxsoft.todo.security.JWTUtil;
 import com.rodaxsoft.todo.test.TaskTestUtils;
 import com.rodaxsoft.todo.test.TestBeanProvider;
 
@@ -126,7 +124,7 @@ public class UserControllerTest implements TestBeanProvider {
 			Assert.assertNotNull(profile.getName());
 			
 			//Delete the new user
-			ApplicationUser savedUser = applicationUserRepository.findByEmail(TaskTestUtils.createMockApplicationUser().getEmail());
+			ApplicationUser savedUser = applicationUserRepository.findByEmail(TaskTestUtils.createStubApplicationUser().getEmail());
 			applicationUserRepository.delete(savedUser);
 			
 		} catch (Exception e) {
@@ -139,7 +137,7 @@ public class UserControllerTest implements TestBeanProvider {
 	@Test
 	public void testLoginUser() {
 		//Create a user, bypassing the controller
-		ApplicationUser mockUser = TaskTestUtils.createMockApplicationUser();
+		ApplicationUser mockUser = TaskTestUtils.createStubApplicationUser();
 		ApplicationUser savedUser = TaskTestUtils.saveMockApplicationUser(this);
 		
 		Map<String, String> credentials = getCredentialsMap(mockUser);
@@ -171,7 +169,7 @@ public class UserControllerTest implements TestBeanProvider {
 	public void testLogout() {
 		
 		//Create a user, bypassing the controller signup
-		ApplicationUser mockUser = TaskTestUtils.createMockApplicationUser();
+		ApplicationUser mockUser = TaskTestUtils.createStubApplicationUser();
 		ApplicationUser savedUser = TaskTestUtils.saveMockApplicationUser(this);
 		
 		Map<String, String> credentials = getCredentialsMap(mockUser);
@@ -211,7 +209,7 @@ public class UserControllerTest implements TestBeanProvider {
 	public void testRefreshAccessToken() {
 		
 		//Create a user, bypassing the controller signup
-		ApplicationUser mockUser = TaskTestUtils.createMockApplicationUser();
+		ApplicationUser mockUser = TaskTestUtils.createStubApplicationUser();
 		ApplicationUser savedUser = TaskTestUtils.saveMockApplicationUser(this);
 
 		Map<String, String> credentials = getCredentialsMap(mockUser);
@@ -284,7 +282,7 @@ public class UserControllerTest implements TestBeanProvider {
 			Assert.assertNotNull(token);
 			
 			//Delete the new user
-			String email = TaskTestUtils.createMockApplicationUser().getEmail();
+			String email = TaskTestUtils.createStubApplicationUser().getEmail();
 			ApplicationUser savedUser = applicationUserRepository.findByEmail(email);
 			applicationUserRepository.delete(savedUser);
 

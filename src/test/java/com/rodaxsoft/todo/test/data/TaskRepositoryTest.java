@@ -13,7 +13,7 @@ package com.rodaxsoft.todo.test.data;
 import static com.rodaxsoft.todo.test.TaskTestUtils.DESCRIPTION;
 import static com.rodaxsoft.todo.test.TaskTestUtils.DUE_DATE;
 import static com.rodaxsoft.todo.test.TaskTestUtils.TITLE;
-import static com.rodaxsoft.todo.test.TaskTestUtils.createMockTask;
+import static com.rodaxsoft.todo.test.TaskTestUtils.createStubTask;
 
 import java.util.List;
 
@@ -51,7 +51,7 @@ public class TaskRepositoryTest {
 	@Test
 	public void testGetTasks() {
 		//Save a task
-		Task task = createMockTask();
+		Task task = createStubTask();
 		task = taskRepository.save(task);
 		String taskId = task.getId();
 		
@@ -71,7 +71,7 @@ public class TaskRepositoryTest {
 	@Test
 	public void testSaveTask() {
 		
-		Task task = TaskTestUtils.createMockTask();
+		Task task = TaskTestUtils.createStubTask();
 		
 		task = taskRepository.save(task);
 		System.out.println();
@@ -95,7 +95,7 @@ public class TaskRepositoryTest {
 	public void testUpdateTask() {
 
 		// Save a task
-		Task task = createMockTask();
+		Task task = createStubTask();
 		task = taskRepository.save(task);
 		
 		final String desc = "An all new description";
